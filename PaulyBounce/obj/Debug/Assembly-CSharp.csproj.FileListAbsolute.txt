@@ -20,3 +20,5 @@ C:\Users\Paul\Documents\Unity Projects\Cowboy Runner\Temp\bin\Debug\UnityEngine.
 C:\Users\Paul\Documents\Unity Projects\Cowboy Runner\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\Paul\Documents\Unity Projects\Cowboy Runner\obj\Debug\Assembly-CSharp.dll
 C:\Users\Paul\Documents\Unity Projects\Cowboy Runner\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Paul\Documents\GitHub\PaulyBounce\PaulyBounce\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Documents\GitHub\PaulyBounce\PaulyBounce\obj\Debug\Assembly-CSharp.dll

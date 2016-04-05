@@ -22,7 +22,6 @@ public class GameplayController : MonoBehaviour {
 
 	IEnumerator CountScore() {
 		yield return new WaitForSeconds(0.6f);
-		score++;
 		scoreText.text = score + "M";
 		StartCoroutine (CountScore());
 	}
