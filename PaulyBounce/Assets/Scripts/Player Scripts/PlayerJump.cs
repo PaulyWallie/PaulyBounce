@@ -6,10 +6,13 @@ public class PlayerJump : MonoBehaviour {
 
 	public AudioClip jumpClip;
 
-	public int movementSpeed;
+	public Rigidbody2D rigidBody;
+
+	public int movementSpeed, waitTime;
+
+	bool hasHitCeiling;
 	 
 	void Update () {
-
 	}
 
 	public void MoveRight(){
@@ -19,4 +22,20 @@ public class PlayerJump : MonoBehaviour {
 	public void MoveLeft(){
 		transform.position += Vector3.left * Time.deltaTime * movementSpeed; 	 
 	}
-} 
+
+	void OnCollisionEnter2D(Collision2D other){
+		if(other.gameObject.tag =="Ceiling"){
+			rigidBody.drag = 1;
+			hasHitCeiling = true;
+			if(other.gameObject.tag =="Hands"){
+				StartCoroutine(ChangeBounce());
+			}
+		}
+	}
+
+	 IEnumerator ChangeBounce(){
+	 	yield return new WaitForSeconds(waitTime);
+	 	rigidBody.drag = 0f;
+	 	hasHitCeiling = false; 
+	 }
+}

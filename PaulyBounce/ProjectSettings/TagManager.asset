@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Obstacle
+  - Hands
   - Collector
-  - Zombie
+  - Ceiling
   layers:
   - Default
   - TransparentFX
