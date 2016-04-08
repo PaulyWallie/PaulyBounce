@@ -4,26 +4,34 @@ using UnityEngine.UI;
 
 public class GameplayController : MonoBehaviour {
 
-	[SerializeField]
-	private GameObject pausePanel;
+	public GameObject pausePanel;
 
-	[SerializeField]
-	private Button restartGameButton;
+	public Button restartGameButton;
 
-	[SerializeField]
-	private Text scoreText, pauseText;
+	public Text scoreText, coinText, pauseText;
 
-	private int score;
+	int score, coins;
 
+	public Spawner spawner;
+
+	void Awake () {
+		
+	}
 	void Start () {
-		scoreText.text = score + "M";
 		StartCoroutine (CountScore());
 	}
 
 	IEnumerator CountScore() {
 		yield return new WaitForSeconds(0.6f);
-		scoreText.text = score + "M";
+		scoreText.text = score + "Meters";
 		StartCoroutine (CountScore());
+	}
+
+	void OnTriggerEnter2D(Collision2D other){
+		if(other.gameObject.tag == "Player"){
+			coinText.text = coins + "Coins";
+			Destroy(gameObject);
+		}
 	}
 
 	void OnEnable(){
@@ -45,6 +53,17 @@ public class GameplayController : MonoBehaviour {
 				PlayerPrefs.SetInt("Score", score);
 			}
 		}
+
+		if (!PlayerPrefs.HasKey ("Coins")){
+			PlayerPrefs.SetInt("Coins", 0);
+		} else {
+			int highestCoins = PlayerPrefs.GetInt("Coins");
+
+			if(highestCoins< coins) {
+				PlayerPrefs.SetInt("Coins", coins);
+			}
+		}
+
 
 		pauseText.text = "Game Over";
 		pausePanel.SetActive (true);
@@ -74,5 +93,4 @@ public class GameplayController : MonoBehaviour {
 		Time.timeScale = 1f;
 		Application.LoadLevel ("Gameplay");
 	}
-
-} // GameplayController
+}
