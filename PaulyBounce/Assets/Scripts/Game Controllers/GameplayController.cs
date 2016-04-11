@@ -12,8 +12,6 @@ public class GameplayController : MonoBehaviour {
 
 	int score, coins;
 
-	public Spawner spawner;
-
 	void Awake () {
 		
 	}
@@ -27,10 +25,9 @@ public class GameplayController : MonoBehaviour {
 		StartCoroutine (CountScore());
 	}
 
-	void OnTriggerEnter2D(Collision2D other){
+	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Player"){
 			coinText.text = coins + "Coins";
-			Destroy(gameObject);
 		}
 	}
 

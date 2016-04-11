@@ -631,12 +631,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e84e6521457f74e8654bf3cba02d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: []
-  obstaclesForSpawning: []
-  minWait: 0
-  maxWait: 0
-  minY: 0
-  maxY: 0
+  hands:
+  - {fileID: 0}
+  coins:
+  - {fileID: 0}
+  minWaitHands: 1.5
+  maxWaitHands: 3
+  minYHands: -2
+  maxYHands: 5
+  minWaitCoins: 0
+  maxWaitCoins: 5
+  minYCoins: 6
+  maxYCoins: 8
 --- !u!4 &446458431
 Transform:
   m_ObjectHideFlags: 0
@@ -973,9 +979,10 @@ GameObject:
   - 33: {fileID: 967832358}
   - 23: {fileID: 967832357}
   - 58: {fileID: 967832356}
+  - 114: {fileID: 967832360}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,11 +1040,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 967832355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.98000002, y: 1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &967832360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 967832355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce46e4a547479774faef1163072dd5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeAmount: 5
 --- !u!1 &1064120750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1196,7 @@ MonoBehaviour:
   pausePanel: {fileID: 2106806690}
   restartGameButton: {fileID: 1064120752}
   scoreText: {fileID: 1942360475}
+  coinText: {fileID: 0}
   pauseText: {fileID: 468991912}
 --- !u!4 &1087007436
 Transform:

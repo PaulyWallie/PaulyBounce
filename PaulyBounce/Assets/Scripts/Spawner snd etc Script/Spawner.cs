@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour {
 	List<GameObject> handsForSpawning = new List<GameObject>();
 	List<GameObject> coinsForSpawning = new List<GameObject>();
 
-	public float minWaitHands, maxWaitHands, minYHands, maxYHands, minWaitCoins, maxWaitCoins, minYCoins, MaxYCoins;
+	public float minWaitHands, maxWaitHands, minYHands, maxYHands, minWaitCoins, maxWaitCoins, minYCoins, maxYCoins;
 
 	void Awake () {
 		InitializeHands();
