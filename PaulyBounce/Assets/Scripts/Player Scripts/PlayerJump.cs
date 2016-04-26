@@ -8,34 +8,22 @@ public class PlayerJump : MonoBehaviour {
 
 	public Rigidbody2D rigidBody;
 
-	public int movementSpeed, waitTime;
+	public int movementSpeed;
+	float horizontalMovement;
 
-	bool hasHitCeiling;
-	 
-	void Update () {
+	void FixedUpdate () {
+		Move(horizontalMovement);
 	}
 
-	public void MoveRight(){
-		transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+	void Move(float horizontalInput){
+
+		Vector2 moveVel = rigidBody.velocity;
+		moveVel.x = horizontalInput * movementSpeed * Time.deltaTime;
+		rigidBody.velocity = moveVel;
 	}
 
-	public void MoveLeft(){
-		transform.position += Vector3.left * Time.deltaTime * movementSpeed; 	 
+	public void StartMoving(float horizontalInput){
+		horizontalMovement = horizontalInput;
 	}
-
-	void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag =="Ceiling"){
-			rigidBody.drag = 1;
-			hasHitCeiling = true;
-			if(other.gameObject.tag =="Hands"){
-				StartCoroutine(ChangeBounce());
-			}
-		}
-	}
-
-	 IEnumerator ChangeBounce(){
-	 	yield return new WaitForSeconds(waitTime);
-	 	rigidBody.drag = 0f;
-	 	hasHitCeiling = false; 
-	 }
 }
+

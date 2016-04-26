@@ -8,9 +8,9 @@ public class GameplayController : MonoBehaviour {
 
 	public Button restartGameButton;
 
-	public Text scoreText, coinText, pauseText;
+	public Text scoreText, pauseText;
 
-	int score, coins;
+	int score;
 
 	void Awake () {
 		
@@ -24,12 +24,7 @@ public class GameplayController : MonoBehaviour {
 		scoreText.text = score + "Meters";
 		StartCoroutine (CountScore());
 	}
-
-	void OnTriggerEnter2D(Collider2D other){
-		if(other.gameObject.tag == "Player"){
-			coinText.text = coins + "Coins";
-		}
-	}
+		
 
 	void OnEnable(){
 		PlayerDied.endGame += PlayerDiedEndTheGame;
@@ -50,17 +45,6 @@ public class GameplayController : MonoBehaviour {
 				PlayerPrefs.SetInt("Score", score);
 			}
 		}
-
-		if (!PlayerPrefs.HasKey ("Coins")){
-			PlayerPrefs.SetInt("Coins", 0);
-		} else {
-			int highestCoins = PlayerPrefs.GetInt("Coins");
-
-			if(highestCoins< coins) {
-				PlayerPrefs.SetInt("Coins", coins);
-			}
-		}
-
 
 		pauseText.text = "Game Over";
 		pausePanel.SetActive (true);

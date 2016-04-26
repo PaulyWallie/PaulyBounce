@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Hands
   - Collector
-  - Ceiling
-  - Coins
   layers:
   - Default
   - TransparentFX
