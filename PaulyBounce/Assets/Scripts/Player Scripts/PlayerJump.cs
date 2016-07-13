@@ -9,11 +9,20 @@ public class PlayerJump : MonoBehaviour {
 	public Rigidbody2D rigidBody;
 
 	public int movementSpeed;
+	public float maxHeight, minHeight;
 	float horizontalMovement;
 
 	void FixedUpdate () {
 		Move(horizontalMovement);
-	}
+		Vector2 temp;
+		if (temp =  new Vector2(this.transform.position.x, maxHeight)) {
+			rigidBody.drag = 1;
+		} else { 
+			if (temp = new Vector2(this.transform.position.x, minHeight)) {
+				rigidBody.drag = .05;
+			}
+		}
+}
 
 	void Move(float horizontalInput){
 
@@ -24,6 +33,6 @@ public class PlayerJump : MonoBehaviour {
 
 	public void StartMoving(float horizontalInput){
 		horizontalMovement = horizontalInput;
+
 	}
 }
-
